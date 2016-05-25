@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using CsQuery;
 using Magpie.Library.Parsers.ValueProviders;
@@ -15,6 +16,7 @@ namespace Magpie.Library.Parsers
         }
 
         public IList<TModelType> ParseModelCollection<TModelType>()
+            where TModelType : new()
         {
             var parsingModel = new ModelBuilder<TModelType>().BuildParsingModel();
             return CreateModelCollection<TModelType>(parsingModel);
@@ -28,11 +30,12 @@ namespace Magpie.Library.Parsers
         }
 
         private IList<TModelType> CreateModelCollection<TModelType>(ParseModel parsingModel)
+            where TModelType : new()
         {
-            var list = new List<TModelType>();
             MultipleParseModel multipleModel = parsingModel as MultipleParseModel;
-
-            return list;
+            Debug.Assert(multipleModel != null);
+            var context = _dom.Select(multipleModel.Selector);
+            return context.Select(e => CreateSingleModel<TModelType>(parsingModel, new CQ(e.OuterHTML))).ToList();
         }
 
         private TModelType CreateSingleModel<TModelType>(ParseModel parsingModel, CQ domModel)
@@ -46,7 +49,7 @@ namespace Magpie.Library.Parsers
 
             foreach (var bindingProperty in parsingModel.Properties)
             {
-                var element = domModel.Select(bindingProperty.Selector);
+                var element = domModel.Select(bindingProperty.Selector).FirstElement();
                 var value = ValueProviderFactory
                                 .GetProvider(bindingProperty)
                                 .GetValue(element, bindingProperty.PropertyType);

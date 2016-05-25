@@ -12,6 +12,6 @@ namespace Magpie.Library.Parsers.ValueProviders
             BindingProperty = bindingProperty;
         }
 
-        public abstract object GetValue(CQ element, Type propertyType);
+        public abstract object GetValue(IDomElement element, Type propertyType);
     }
 }

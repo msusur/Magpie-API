@@ -12,13 +12,13 @@ namespace Magpie.Library.Tests
     {
         // ReSharper disable once ClassNeverInstantiated.Global
         // ReSharper disable once MemberCanBePrivate.Global
-        [CollectionBinding(Selector = ".list-items")]
+        [CollectionBinding(Selector = ".list-items li")]
         public class DetailModel
         {
-            [AttributeBinding(Selector = "div.product-name", AttributeName = "product-name")]
+            [AttributeBinding(Selector = "span.product-name", AttributeName = "product-name")]
             public string Name { get; set; }
 
-            [InnerTextBinding(Selector = "div.product-price")]
+            [InnerTextBinding(Selector = "span.product-price")]
             public string Price { get; set; }
         }
 
@@ -47,7 +47,7 @@ namespace Magpie.Library.Tests
             HtmlParser parser = new HtmlParser(html);
             var parseResponse = parser.ParseModel<DetailModel>();
 
-            Assert.Equal(parseResponse.Name, "OO nice!");
+            Assert.Equal(parseResponse.Name, "item 1");
             Assert.Equal(parseResponse.Price, "12");
         }
 

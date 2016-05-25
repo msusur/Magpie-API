@@ -9,7 +9,7 @@ namespace Magpie.Library.Parsers.ValueProviders
             : base(null)
         { }
 
-        public override object GetValue(CQ element, Type propertyType)
+        public override object GetValue(IDomElement element, Type propertyType)
         {
             return propertyType.IsValueType ? Activator.CreateInstance(propertyType) : null;
         }

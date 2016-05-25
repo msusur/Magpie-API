@@ -11,12 +11,12 @@ namespace Magpie.Library.Parsers.ValueProviders
             : base(bindingProperty)
         { }
 
-        public override object GetValue(CQ element, Type propertyType)
+        public override object GetValue(IDomElement element, Type propertyType)
         {
             var htmlBindingAttribute = BindingProperty.Attribute as AttributeBindingAttribute;
             Debug.Assert(htmlBindingAttribute != null);
 
-            return Convert.ChangeType(element.Attr(htmlBindingAttribute.AttributeName), propertyType);
+            return Convert.ChangeType(element.GetAttribute(htmlBindingAttribute.AttributeName), propertyType);
         }
     }
 }

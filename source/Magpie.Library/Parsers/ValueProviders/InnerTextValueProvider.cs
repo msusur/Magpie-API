@@ -11,11 +11,11 @@ namespace Magpie.Library.Parsers.ValueProviders
         {
         }
 
-        public override object GetValue(CQ element, Type propertyType)
+        public override object GetValue(IDomElement element, Type propertyType)
         {
             var attr = BindingProperty.Attribute as InnerTextBindingAttribute;
             Debug.Assert(attr != null);
-            return Convert.ChangeType(element.Text(), propertyType);
+            return Convert.ChangeType(element.InnerText, propertyType);
         }
     }
 }
