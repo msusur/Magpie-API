@@ -16,7 +16,7 @@ namespace Magpie.Library.Parsers
             {
                 return new SingleParseModel();
             }
-            return new MultipleParseModel();
+            return new MultipleParseModel(firstAttribute.Selector);
         }
     }
 }

@@ -8,14 +8,4 @@ namespace Magpie.Library.Parsers
         public IList<BindingProperty> Properties { get; } = new List<BindingProperty>();
         public Type Type { get; set; }
     }
-
-    internal sealed class SingleParseModel : ParseModel
-    {
-
-    }
-
-    internal sealed class MultipleParseModel : ParseModel
-    {
-
-    }
 }

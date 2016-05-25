@@ -55,9 +55,11 @@
     <Compile Include="Parsers\BindingProperty.cs" />
     <Compile Include="Parsers\HtmlParser.cs" />
     <Compile Include="Parsers\ModelBuilder.cs" />
+    <Compile Include="Parsers\MultipleParseModel.cs" />
     <Compile Include="Parsers\ParseCommandTypes.cs" />
     <Compile Include="Parsers\ParseModel.cs" />
     <Compile Include="Parsers\ParseModelBuilder.cs" />
+    <Compile Include="Parsers\SingleParseModel.cs" />
     <Compile Include="Parsers\ValueProviders\ValueProviderFactory.cs" />
     <Compile Include="Parsers\ValueProviders\AttributeValueProvider.cs" />
     <Compile Include="Parsers\ValueProviders\InnerTextValueProvider.cs" />
