@@ -1,4 +1,4 @@
-﻿namespace Magpie.Library.Parser
+﻿namespace Magpie.Library.Parsers
 {
     public enum ParseCommandTypes { AsSingleObject, AsList }
 }

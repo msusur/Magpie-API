@@ -30,8 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsQuery, Version=1.3.5.124, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsQuery.1.3.5-beta5\lib\net40\CsQuery.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\System.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,10 +48,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Parser\HtmlParser.cs" />
-    <Compile Include="Parser\ParseCommand.cs" />
-    <Compile Include="Parser\ParseCommandTypes.cs" />
+    <Compile Include="Attributes\AttributeBindingAttribute.cs" />
+    <Compile Include="Attributes\HtmlBindingAttribute.cs" />
+    <Compile Include="Attributes\InnerTextBindingAttribute.cs" />
+    <Compile Include="Parsers\BindingProperty.cs" />
+    <Compile Include="Parsers\HtmlParser.cs" />
+    <Compile Include="Parsers\ModelBuilder.cs" />
+    <Compile Include="Parsers\ParseCommandTypes.cs" />
+    <Compile Include="Parsers\ParseModel.cs" />
+    <Compile Include="Parsers\ValueProviders\AttributeValueProvider.cs" />
+    <Compile Include="Parsers\ValueProviders\InnerTextValueProvider.cs" />
+    <Compile Include="Parsers\ValueProviders\NullValueProvider.cs" />
+    <Compile Include="Parsers\ValueProviders\ValueProviderBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
