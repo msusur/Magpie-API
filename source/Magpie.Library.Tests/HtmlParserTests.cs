@@ -12,9 +12,10 @@ namespace Magpie.Library.Tests
     {
         // ReSharper disable once ClassNeverInstantiated.Global
         // ReSharper disable once MemberCanBePrivate.Global
+        [CollectionBinding(Selector = ".list-items")]
         public class DetailModel
         {
-            [AttributeBinding(Selector = "div.product-name", AttributeName = "class")]
+            [AttributeBinding(Selector = "div.product-name", AttributeName = "product-name")]
             public string Name { get; set; }
 
             [InnerTextBinding(Selector = "div.product-price")]
@@ -41,18 +42,31 @@ namespace Magpie.Library.Tests
         [Fact]
         public void ShouldParseSingleModel()
         {
-            string html = LoadSampleHtml("SampleItemHtml");
+            string html = LoadSampleHtml("BasicItem");
 
             HtmlParser parser = new HtmlParser(html);
             var parseResponse = parser.ParseModel<DetailModel>();
+
+            Assert.Equal(parseResponse.Name, "OO nice!");
+            Assert.Equal(parseResponse.Price, "12");
         }
 
         [Fact]
         public void ShouldParseAListOfModel()
         {
-            string html = LoadSampleHtml("SampleListHtml");
+            string html = LoadSampleHtml("BasicList");
             HtmlParser parser = new HtmlParser(html);
             var parseResponse = parser.ParseModelCollection<DetailModel>();
+            Assert.Equal(4, parseResponse.Count);
+
+            Assert.Equal("item 1", parseResponse[0].Name);
+            Assert.Equal("12", parseResponse[0].Price);
+            Assert.Equal("item 2", parseResponse[1].Name);
+            Assert.Equal("32", parseResponse[1].Price);
+            Assert.Equal("item 3", parseResponse[2].Name);
+            Assert.Equal("44", parseResponse[2].Price);
+            Assert.Equal("item 4", parseResponse[3].Name);
+            Assert.Equal("55", parseResponse[3].Price);
         }
     }
 }

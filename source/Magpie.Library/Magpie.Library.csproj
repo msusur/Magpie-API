@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\AttributeBindingAttribute.cs" />
+    <Compile Include="Attributes\CollectionBindingAttribute.cs" />
     <Compile Include="Attributes\HtmlBindingAttribute.cs" />
     <Compile Include="Attributes\InnerTextBindingAttribute.cs" />
     <Compile Include="Parsers\BindingProperty.cs" />
@@ -56,6 +57,8 @@
     <Compile Include="Parsers\ModelBuilder.cs" />
     <Compile Include="Parsers\ParseCommandTypes.cs" />
     <Compile Include="Parsers\ParseModel.cs" />
+    <Compile Include="Parsers\ParseModelBuilder.cs" />
+    <Compile Include="Parsers\ValueProviders\ValueProviderFactory.cs" />
     <Compile Include="Parsers\ValueProviders\AttributeValueProvider.cs" />
     <Compile Include="Parsers\ValueProviders\InnerTextValueProvider.cs" />
     <Compile Include="Parsers\ValueProviders\NullValueProvider.cs" />
