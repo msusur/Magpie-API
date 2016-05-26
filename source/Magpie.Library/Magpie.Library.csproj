@@ -66,6 +66,8 @@
     <Compile Include="Parsers\ValueProviders\NullValueProvider.cs" />
     <Compile Include="Parsers\ValueProviders\ValueProviderBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ILogSystem.cs" />
+    <Compile Include="Services\LogSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
