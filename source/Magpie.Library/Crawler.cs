@@ -6,7 +6,7 @@ using Magpie.Library.Parsers;
 
 namespace Magpie.Library
 {
-    public class Crawler
+    public sealed class Crawler
     {
         public async Task<TModel> Crawl<TModel>(string url)
             where TModel : new()
