@@ -60,8 +60,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrawlerTests.cs" />
     <Compile Include="HtmlParserTests.cs" />
+    <Compile Include="HtmlTestResources\ResourceHelper.cs" />
     <Compile Include="HttpProviderTests.cs" />
+    <Compile Include="HttpServerMock\BasicHttpServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +88,7 @@
   <ItemGroup>
     <EmbeddedResource Include="HtmlTestResources\BasicList.html" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

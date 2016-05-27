@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Magpie.Library.Http.Providers
 {
@@ -7,6 +8,6 @@ namespace Magpie.Library.Http.Providers
         //// spending time on this YAGNI, remarkable...
         //void CallWebUrl<TResponseModel>(string method, HttpOptions options, object data, Action<CallResponse> callback);
 
-        void CallWebPage(HttpOptions options, Action<HtmlResponse> callback);
+        HttpResponse CallWebPage(HttpOptions options);
     }
 }

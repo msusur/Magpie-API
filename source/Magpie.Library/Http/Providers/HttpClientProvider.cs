@@ -1,12 +1,11 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using CsQuery.ExtensionMethods;
 
 namespace Magpie.Library.Http.Providers
 {
     public class HttpClientProvider : IHttpProvider
     {
-        public async void CallWebPage(HttpOptions options, Action<HtmlResponse> callback)
+        public HttpResponse CallWebPage(HttpOptions options)
         {
             using (var client = new HttpClient())
             {
@@ -20,10 +19,14 @@ namespace Magpie.Library.Http.Providers
 
                 options.Interceptors.ForEach(i => i.BeforeCall(httpContext));
 
-                var response = await client.GetStringAsync(options.TargetUrl);
-                httpContext.Response = new HttpResponse(response);
+                // work on this one..
+                var response = client.GetStringAsync(options.TargetUrl);
+                response.Wait();
+                httpContext.Response = new HttpResponse(response.Result);
 
                 options.Interceptors.ForEach(i => i.AfterCall(httpContext));
+
+                return httpContext.Response;
             }
         }
     }

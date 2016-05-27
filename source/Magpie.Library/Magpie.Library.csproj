@@ -52,6 +52,7 @@
     <Compile Include="Attributes\CollectionBindingAttribute.cs" />
     <Compile Include="Attributes\HtmlBindingAttribute.cs" />
     <Compile Include="Attributes\InnerTextBindingAttribute.cs" />
+    <Compile Include="Crawler.cs" />
     <Compile Include="Http\Exceptions\InvalidUrlException.cs" />
     <Compile Include="Http\HttpCall.cs" />
     <Compile Include="Http\HtmlResponse.cs" />
