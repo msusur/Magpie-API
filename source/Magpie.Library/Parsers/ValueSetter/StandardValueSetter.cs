@@ -12,10 +12,10 @@ namespace Magpie.Library.Parsers.ValueSetter
             _properties = properties;
         }
 
-        internal override void SetValue(string propertyName, object value, object value)
+        internal override void SetValue(string propertyName, object instance, object value)
         {
             var propertyInfo = _properties[propertyName];
-            propertyInfo.SetValue(value, value);
+            propertyInfo.SetValue(instance, value);
         }
     }
 }

@@ -55,7 +55,7 @@ namespace Magpie.Library.Parsers
             MultipleParseModel multipleModel = parsingModel as MultipleParseModel;
             Debug.Assert(multipleModel != null);
             var context = _dom.Select(multipleModel.Selector);
-            return context.Select(e => CreateSingleModel(parsingModel, new CQ(e.OuterHTML), 
+            return context.Select(e => CreateSingleModel(parsingModel, new CQ(e.OuterHTML),
                                                                     Activator.CreateInstance(modelType))).ToList();
         }
 
@@ -76,7 +76,7 @@ namespace Magpie.Library.Parsers
                 var value = ValueProviderFactory
                                 .GetProvider(bindingProperty)
                                 .GetValue(element, bindingProperty.PropertyType);
-                valueSetter.SetValue(bindingProperty.PropertyName, instance);
+                valueSetter.SetValue(bindingProperty.PropertyName, instance, value);
             }
 
             return instance;

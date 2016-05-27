@@ -12,7 +12,7 @@ namespace Magpie.Library.Parsers.ValueSetter
             var isDynamic = typeof(DynamicObject).IsAssignableFrom(instanceType);
             if (isDynamic)
             {
-                return new DynamicValueSetter(properties);
+                return new DynamicValueSetter();
             }
             return new StandardValueSetter(properties);
         }
