@@ -1,7 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using CsQuery.ExtensionMethods;
+using NetHttp = System.Net.Http;
 using Magpie.Library.Http.Exceptions;
 using Magpie.Library.Http.Providers;
 
@@ -19,7 +19,8 @@ namespace Magpie.Library.Http
             if (provider == null)
             {
                 // let's wait until we find a better solution.
-                provider = new BasicHttpProvider();
+                //provider = new BasicHttpProvider();
+                provider = new HttpClientProvider();
             }
 
             _provider = provider;
@@ -57,28 +58,13 @@ namespace Magpie.Library.Http
             return this;
         }
 
-        public async Task<HttpCall> Get(Action<CallResponse> callback)
+        public async Task<HttpCall> LoadPage(Action<HtmlResponse> callback)
         {
-            return await Task.Factory.StartNew<HttpCall>(() => Execute(Methods.Get, null, callback));
-        }
-
-        public async Task<HttpCall> Post<TResponseModelType>(object requestData, Action<CallResponse<TResponseModelType>> callback)
-        {
-            return await Task.Factory.StartNew<HttpCall>(() => Execute(Methods.Post, requestData, callback));
-        }
-
-        private HttpCall Execute(string method, object requestData, Action<CallResponse> callback)
-        {
-            return Execute<GenericDataModel>(method, requestData, r=> callback(r.ConvertToResponse()));
-        }
-
-        private HttpCall Execute<TResponseModelType>(string method, object requestData, Action<CallResponse<TResponseModelType>> callback)
-        {
-            _provider.CallWebUrl(Options, requestData, response =>
+            return await Task.Factory.StartNew(() =>
             {
-
+                _provider.CallWebPage(Options, callback);
+                return this;
             });
-            return this;
         }
     }
 }

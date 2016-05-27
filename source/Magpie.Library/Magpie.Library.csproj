@@ -52,15 +52,14 @@
     <Compile Include="Attributes\CollectionBindingAttribute.cs" />
     <Compile Include="Attributes\HtmlBindingAttribute.cs" />
     <Compile Include="Attributes\InnerTextBindingAttribute.cs" />
-    <Compile Include="Http\CallResponse.cs" />
     <Compile Include="Http\Exceptions\InvalidUrlException.cs" />
     <Compile Include="Http\HttpCall.cs" />
+    <Compile Include="Http\HtmlResponse.cs" />
     <Compile Include="Http\HttpOptions.cs" />
     <Compile Include="Http\HttpResponse.cs" />
     <Compile Include="Http\IInterceptor.cs" />
-    <Compile Include="Http\Providers\BasicHttpProvider.cs" />
+    <Compile Include="Http\Providers\HttpClientProvider.cs" />
     <Compile Include="Http\Providers\IHttpProvider.cs" />
-    <Compile Include="Methods.cs" />
     <Compile Include="Parsers\BindingProperty.cs" />
     <Compile Include="Parsers\HtmlParser.cs" />
     <Compile Include="Parsers\ModelBuilder.cs" />

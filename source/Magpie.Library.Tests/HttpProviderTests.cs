@@ -43,7 +43,6 @@ namespace Magpie.Library.Tests
         [Fact]
         public void ShouldMakeCallWithGenericHttpMethod()
         {
-            Action<CallResponse> callback = c => { };
             var result = HttpCall
                 .To("http://localhost:8088");
             //.Execute("TESTMETHOD", callback);
