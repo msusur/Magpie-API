@@ -8,6 +8,6 @@ namespace Magpie.Library.Http.Providers
         //// spending time on this YAGNI, remarkable...
         //void CallWebUrl<TResponseModel>(string method, HttpOptions options, object data, Action<CallResponse> callback);
 
-        HttpResponse CallWebPage(HttpOptions options);
+        Task<HttpResponse> CallWebPage(HttpOptions options);
     }
 }

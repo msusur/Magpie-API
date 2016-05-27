@@ -60,7 +60,7 @@ namespace Magpie.Library.Http
 
         public async Task<HttpResponse> LoadPage()
         {
-            return await Task.Factory.StartNew(() => _provider.CallWebPage(Options));
+            return await _provider.CallWebPage(Options);
         }
     }
 }

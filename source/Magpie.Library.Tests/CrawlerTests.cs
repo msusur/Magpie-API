@@ -19,22 +19,37 @@ namespace Magpie.Library.Tests
             public string Price { get; set; }
         }
 
-        public CrawlerTests()
-        {
-
-        }
-
         [Fact]
-        public void ShouldCrawlSingleObject()
+        public async void ShouldCrawlSingleObjectFromBasicHtml()
         {
             using (var http = new BasicHttpServer("9090", l => ResourceHelper.LoadSampleHtml("BasicItem")))
             {
+                http.Run();
                 var crawler = new Crawler();
-                var result = crawler.Crawl<DetailModel>("http://localhost:9090/test.html");
-                result.Wait();
-                var parseResponse = result.Result;
+                var parseResponse = await crawler.Crawl<DetailModel>("http://localhost:9090/test.html");
                 Assert.Equal(parseResponse.Name, "item 1");
                 Assert.Equal(parseResponse.Price, "12");
+            }
+        }
+
+        [Fact]
+        public async void ShouldCrawlListObjectFromBasicListHtml()
+        {
+            using (var http = new BasicHttpServer("9090", l => ResourceHelper.LoadSampleHtml("BasicList")))
+            {
+                http.Run();
+                var crawler = new Crawler();
+                var parseResponse = await crawler.CrawlCollection<DetailModel>("http://localhost:9090/test.html");
+                Assert.Equal(4, parseResponse.Count);
+
+                Assert.Equal("item 1", parseResponse[0].Name);
+                Assert.Equal("12", parseResponse[0].Price);
+                Assert.Equal("item 2", parseResponse[1].Name);
+                Assert.Equal("32", parseResponse[1].Price);
+                Assert.Equal("item 3", parseResponse[2].Name);
+                Assert.Equal("44", parseResponse[2].Price);
+                Assert.Equal("item 4", parseResponse[3].Name);
+                Assert.Equal("55", parseResponse[3].Price);
             }
         }
     }

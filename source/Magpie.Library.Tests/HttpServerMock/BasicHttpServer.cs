@@ -28,28 +28,38 @@ namespace Magpie.Library.Tests.HttpServerMock
         {
             ThreadPool.QueueUserWorkItem((o) =>
             {
-                while (_listener.IsListening)
+                try
                 {
-                    ThreadPool.QueueUserWorkItem((c) =>
+                    while (_listener.IsListening)
                     {
-                        var ctx = c as HttpListenerContext;
-                        if (ctx == null)
+                        ThreadPool.QueueUserWorkItem((c) =>
                         {
-                            return;
-                        }
-                        try
-                        {
-                            string rstr = _responderMethod(ctx.Request);
-                            byte[] buf = Encoding.UTF8.GetBytes(rstr);
-                            ctx.Response.ContentLength64 = buf.Length;
-                            ctx.Response.OutputStream.Write(buf, 0, buf.Length);
-                        }
-                        finally
-                        {
-                            // always close the stream
-                            ctx?.Response.OutputStream.Close();
-                        }
-                    }, _listener.GetContext());
+                            var ctx = c as HttpListenerContext;
+                            if (ctx == null)
+                            {
+                                return;
+                            }
+                            try
+                            {
+                                string rstr = _responderMethod(ctx.Request);
+                                byte[] buf = Encoding.UTF8.GetBytes(rstr);
+                                ctx.Response.ContentLength64 = buf.Length;
+                                ctx.Response.OutputStream.Write(buf, 0, buf.Length);
+                            }
+                            catch
+                            { //avoid exceptions.
+                            }
+                            finally
+                            {
+                                // always close the stream
+                                ctx?.Response.OutputStream.Close();
+                            }
+                        }, _listener.GetContext());
+                    }
+                }
+                catch
+                {
+                    //avoid exceptions.
                 }
             });
         }

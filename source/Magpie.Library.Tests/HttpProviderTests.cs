@@ -40,13 +40,12 @@ namespace Magpie.Library.Tests
             Assert.Equal(1, call.Options.Interceptors.Count);
         }
 
-        [Fact]
-        public void ShouldMakeCallWithGenericHttpMethod()
-        {
-            var result = HttpCall
-                .To("http://localhost:8088");
-            //.Execute("TESTMETHOD", callback);
-        }
+        //[Fact]
+        //public async void ShouldMakeCallWithGenericHttpMethod()
+        //{
+        //    var call = await HttpCall.To("http://www.google.com").LoadPage();
+        //    var x = call.ResponseString;
+        //}
     }
 
     public class TestInterceptor : BaseInterceptor

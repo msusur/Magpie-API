@@ -1,8 +1,4 @@
-﻿using System.IO;
-using System.Reflection;
-using System.Resources;
-using System.Text;
-using Magpie.Library.Attributes;
+﻿using Magpie.Library.Attributes;
 using Magpie.Library.Parsers;
 using Magpie.Library.Tests.HtmlTestResources;
 using Xunit;
@@ -22,8 +18,6 @@ namespace Magpie.Library.Tests
             [InnerTextBinding(Selector = "span.product-price")]
             public string Price { get; set; }
         }
-
-        
 
         [Fact]
         public void ShouldParseSingleModel()
