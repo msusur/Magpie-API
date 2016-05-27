@@ -24,15 +24,15 @@ namespace Magpie.Library.Tests.HttpServerMock
             : this(port, method)
         { }
 
-        public void Run()
+        public BasicHttpServer Run()
         {
-            ThreadPool.QueueUserWorkItem((o) =>
+            ThreadPool.QueueUserWorkItem(o =>
             {
                 try
                 {
                     while (_listener.IsListening)
                     {
-                        ThreadPool.QueueUserWorkItem((c) =>
+                        ThreadPool.QueueUserWorkItem(c =>
                         {
                             var ctx = c as HttpListenerContext;
                             if (ctx == null)
@@ -52,7 +52,7 @@ namespace Magpie.Library.Tests.HttpServerMock
                             finally
                             {
                                 // always close the stream
-                                ctx?.Response.OutputStream.Close();
+                                ctx.Response.OutputStream.Close();
                             }
                         }, _listener.GetContext());
                     }
@@ -62,6 +62,7 @@ namespace Magpie.Library.Tests.HttpServerMock
                     //avoid exceptions.
                 }
             });
+            return this;
         }
 
         public void Stop()

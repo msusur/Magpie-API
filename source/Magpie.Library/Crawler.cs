@@ -34,5 +34,18 @@ namespace Magpie.Library
 
             return parser.ParseModel<TModel>();
         }
+
+
+        public async Task<GenericModel> Crawl(string url, ParseModel model)
+        {
+            return await HttpCall.To(url).LoadPage().ContinueWith<GenericModel>(t => CrawlGenericItem(t, model));
+        }
+
+        private GenericModel CrawlGenericItem(Task<HttpResponse> obj, ParseModel model)
+        {
+            var parser = new HtmlParser(obj.Result.ResponseString);
+
+            return parser.ParseModel<GenericModel>(model);
+        }
     }
 }

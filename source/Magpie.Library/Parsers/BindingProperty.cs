@@ -3,7 +3,7 @@ using Magpie.Library.Attributes;
 
 namespace Magpie.Library.Parsers
 {
-    internal class BindingProperty
+    public class BindingProperty
     {
         public string PropertyName { get; private set; }
         public Type PropertyType { get; private set; }

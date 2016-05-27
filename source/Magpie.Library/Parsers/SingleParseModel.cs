@@ -1,6 +1,6 @@
 namespace Magpie.Library.Parsers
 {
-    internal sealed class SingleParseModel : ParseModel
+    internal sealed class SingleParseModel : StronglyTypedParseModel
     {
 
     }

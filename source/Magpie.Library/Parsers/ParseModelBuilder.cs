@@ -6,7 +6,7 @@ namespace Magpie.Library.Parsers
 {
     internal static class ParseModelBuilder
     {
-        public static ParseModel Build(Type type)
+        public static StronglyTypedParseModel Build(Type type)
         {
             var firstAttribute =
                 type.GetCustomAttributes(typeof(CollectionBindingAttribute), true)

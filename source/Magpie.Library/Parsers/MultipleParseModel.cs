@@ -1,6 +1,6 @@
 ﻿namespace Magpie.Library.Parsers
 {
-    internal sealed class MultipleParseModel : ParseModel
+    internal sealed class MultipleParseModel : StronglyTypedParseModel
     {
         public string Selector { get; private set; }
 

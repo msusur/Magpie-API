@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
 using CsQuery;
 using Magpie.Library.Parsers.ValueProviders;
+using Magpie.Library.Parsers.ValueSetter;
 
 namespace Magpie.Library.Parsers
 {
@@ -33,6 +35,12 @@ namespace Magpie.Library.Parsers
             where TModelType : new()
         {
             var parsingModel = new ModelBuilder<TModelType>().BuildParsingModel();
+            return ParseModel<TModelType>(parsingModel);
+        }
+
+        public TModelType ParseModel<TModelType>(ParseModel parsingModel)
+            where TModelType : new()
+        {
             return CreateSingleModel<TModelType>(parsingModel, _dom);
         }
 
@@ -60,8 +68,7 @@ namespace Magpie.Library.Parsers
         private object CreateSingleModel(ParseModel parsingModel, CQ domModel, object instance)
         {
             var instanceType = instance.GetType();
-            var properties = instanceType.GetProperties()
-                .ToDictionary(p => p.Name);
+            var valueSetter = ValueSetterFactory.GetSetter(instanceType);
 
             foreach (var bindingProperty in parsingModel.Properties)
             {
@@ -69,8 +76,7 @@ namespace Magpie.Library.Parsers
                 var value = ValueProviderFactory
                                 .GetProvider(bindingProperty)
                                 .GetValue(element, bindingProperty.PropertyType);
-                var propertyInfo = properties[bindingProperty.PropertyName];
-                propertyInfo.SetValue(instance, value);
+                valueSetter.SetValue(bindingProperty.PropertyName, instance);
             }
 
             return instance;

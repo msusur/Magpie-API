@@ -20,7 +20,7 @@ namespace Magpie.Library.Parsers
         private ParseModel GenerateModel(string key)
         {
             var type = typeof(TModelType);
-            ParseModel model = ParseModelBuilder.Build(type);
+            var model = ParseModelBuilder.Build(type);
 
             foreach (var propertyInfo in type.GetProperties())
             {
