@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
-using CsQuery;
+// TODO: Removed for dotnetcore migration
+// using CsQuery;
 using Magpie.Library.Attributes;
 
 namespace Magpie.Library.Parsers.ValueProviders

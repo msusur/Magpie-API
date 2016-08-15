@@ -1,5 +1,6 @@
 ﻿using System;
-using CsQuery;
+// TODO: Removed for dotnetcore migration
+// using CsQuery;
 
 namespace Magpie.Library.Parsers.ValueProviders
 {

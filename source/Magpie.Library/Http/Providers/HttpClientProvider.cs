@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using CsQuery.ExtensionMethods;
+// TODO: Removed for dotnetcore migration
+// using CsQuery.ExtensionMethods;
 
 namespace Magpie.Library.Http.Providers
 {

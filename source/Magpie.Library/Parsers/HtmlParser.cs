@@ -4,7 +4,8 @@ using System.Diagnostics;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
-using CsQuery;
+// TODO: Removed for dotnetcore migration
+//using CsQuery;
 using Magpie.Library.Parsers.ValueProviders;
 using Magpie.Library.Parsers.ValueSetter;
 
