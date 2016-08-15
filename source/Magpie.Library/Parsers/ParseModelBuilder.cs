@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Reflection;
 using Magpie.Library.Attributes;
 
 namespace Magpie.Library.Parsers
@@ -9,7 +10,7 @@ namespace Magpie.Library.Parsers
         public static StronglyTypedParseModel Build(Type type)
         {
             var firstAttribute =
-                type.GetCustomAttributes(typeof(CollectionBindingAttribute), true)
+                type.GetTypeInfo().GetCustomAttributes(typeof(CollectionBindingAttribute), true)
                     .Cast<CollectionBindingAttribute>()
                     .FirstOrDefault();
             if (firstAttribute == null)

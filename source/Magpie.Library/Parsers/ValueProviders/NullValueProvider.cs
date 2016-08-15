@@ -1,6 +1,6 @@
-﻿using System;
-// TODO: Removed for dotnetcore migration
-//using CsQuery;
+﻿using AngleSharp.Dom;
+using System;
+using System.Reflection;
 
 namespace Magpie.Library.Parsers.ValueProviders
 {
@@ -10,9 +10,9 @@ namespace Magpie.Library.Parsers.ValueProviders
             : base(null)
         { }
 
-        public override object GetValue(IDomElement element, Type propertyType)
+        public override object GetValue(IElement element, Type propertyType)
         {
-            return propertyType.IsValueType ? Activator.CreateInstance(propertyType) : null;
+            return propertyType.GetTypeInfo().IsValueType ? Activator.CreateInstance(propertyType) : null;
         }
     }
 }

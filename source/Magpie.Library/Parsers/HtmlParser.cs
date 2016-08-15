@@ -1,28 +1,29 @@
-﻿using System;
+﻿using AngleSharp.Parser.Html;
+using AngleSharp.Dom.Html;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Dynamic;
 using System.IO;
 using System.Linq;
-// TODO: Removed for dotnetcore migration
-//using CsQuery;
 using Magpie.Library.Parsers.ValueProviders;
 using Magpie.Library.Parsers.ValueSetter;
 
 namespace Magpie.Library.Parsers
 {
-    public class HtmlParser
+    public class HtmlParserModule
     {
-        private readonly CQ _dom;
+        private readonly IHtmlDocument _dom;
+        private readonly HtmlParser _parser = new HtmlParser();
 
-        public HtmlParser(string inputHtml)
+        public HtmlParserModule(string inputHtml)
         {
-            _dom = CQ.Create(inputHtml);
+            _dom = _parser.Parse(inputHtml);
         }
 
-        public HtmlParser(Stream htmlStream)
+        public HtmlParserModule(Stream htmlStream)
         {
-            _dom = CQ.Create(htmlStream);
+            //_dom = CQ.Create(htmlStream);
+            _dom = _parser.Parse(htmlStream);
         }
 
         public IList<TModelType> ParseModelCollection<TModelType>()
@@ -55,25 +56,25 @@ namespace Magpie.Library.Parsers
         {
             MultipleParseModel multipleModel = parsingModel as MultipleParseModel;
             Debug.Assert(multipleModel != null);
-            var context = _dom.Select(multipleModel.Selector);
-            return context.Select(e => CreateSingleModel(parsingModel, new CQ(e.OuterHTML),
+            var context = _dom.QuerySelectorAll(multipleModel.Selector);
+            return context.Select(e => CreateSingleModel(parsingModel, new HtmlParser().Parse(e.OuterHtml),
                                                                     Activator.CreateInstance(modelType))).ToList();
         }
 
-        private TModelType CreateSingleModel<TModelType>(ParseModel parsingModel, CQ domModel)
+        private TModelType CreateSingleModel<TModelType>(ParseModel parsingModel, IHtmlDocument domModel)
             where TModelType : new()
         {
             return (TModelType)CreateSingleModel(parsingModel, domModel, new TModelType());
         }
 
-        private object CreateSingleModel(ParseModel parsingModel, CQ domModel, object instance)
+        private object CreateSingleModel(ParseModel parsingModel, IHtmlDocument domModel, object instance)
         {
             var instanceType = instance.GetType();
             var valueSetter = ValueSetterFactory.GetSetter(instanceType);
 
             foreach (var bindingProperty in parsingModel.Properties)
             {
-                var element = domModel.Select(bindingProperty.Selector).FirstElement();
+                var element = domModel.QuerySelectorAll(bindingProperty.Selector).FirstOrDefault();
                 var value = ValueProviderFactory
                                 .GetProvider(bindingProperty)
                                 .GetValue(element, bindingProperty.PropertyType);

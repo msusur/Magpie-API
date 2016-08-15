@@ -7,8 +7,6 @@ namespace Magpie.Library.Tests
 {
     public class HtmlParserTests
     {
-        // ReSharper disable once ClassNeverInstantiated.Global
-        // ReSharper disable once MemberCanBePrivate.Global
         [CollectionBinding(Selector = ".list-items li")]
         public class DetailModel
         {
@@ -24,7 +22,7 @@ namespace Magpie.Library.Tests
         {
             string html = ResourceHelper.LoadSampleHtml("BasicItem");
 
-            HtmlParser parser = new HtmlParser(html);
+            HtmlParserModule parser = new HtmlParserModule(html);
             var parseResponse = parser.ParseModel<DetailModel>();
 
             Assert.Equal(parseResponse.Name, "item 1");
@@ -35,7 +33,7 @@ namespace Magpie.Library.Tests
         public void ShouldParseAListOfModel()
         {
             string html = ResourceHelper.LoadSampleHtml("BasicList");
-            HtmlParser parser = new HtmlParser(html);
+            HtmlParserModule parser = new HtmlParserModule(html);
             var parseResponse = parser.ParseModelCollection<DetailModel>();
             Assert.Equal(4, parseResponse.Count);
 
