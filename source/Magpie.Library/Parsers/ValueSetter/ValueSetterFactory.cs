@@ -9,8 +9,8 @@ namespace Magpie.Library.Parsers.ValueSetter
     {
         public static ValueSetterBase GetSetter(Type instanceType)
         {
-            var properties = instanceType.GetProperties().ToDictionary(p => p.Name);
-            var isDynamic = typeof(DynamicObject).IsAssignableFrom(instanceType);
+            var properties = instanceType.GetTypeInfo().GetProperties().ToDictionary(p => p.Name);
+            var isDynamic = typeof(DynamicObject).GetTypeInfo().IsAssignableFrom(instanceType);
             if (isDynamic)
             {
                 return new DynamicValueSetter();

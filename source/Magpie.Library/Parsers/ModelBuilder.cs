@@ -23,7 +23,7 @@ namespace Magpie.Library.Parsers
             var type = typeof(TModelType);
             var model = ParseModelBuilder.Build(type);
 
-            foreach (var propertyInfo in type.GetProperties())
+            foreach (var propertyInfo in type.GetTypeInfo().GetProperties())
             {
                 var attribute = propertyInfo
                     .GetCustomAttributes(typeof(HtmlBindingAttribute), true)
