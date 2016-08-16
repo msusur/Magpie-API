@@ -16,6 +16,12 @@
       "target": "project"
     }
   },
+  "buildOptions": {
+    "emitEntryPoint": true,
+    "embed": [
+      "HtmlTestResources/*.html"
+    ]
+  },
   "frameworks": {
     "netcoreapp1.0": {
       "dependencies": {
