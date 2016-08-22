@@ -1,0 +1,26 @@
+{
+  "name": "magpie-api",
+  "version": "1.0.0",
+  "description": "Magpie is a basic web content to model binder. Model binding properties are defined as attributes and binded using css selectors.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msusur/Magpie-API.git"
+  },
+  "author": "Mert Susur <mail@mertsusur.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/msusur/Magpie-API/issues"
+  },
+  "homepage": "https://github.com/msusur/Magpie-API#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-exec": "^1.0.0"
+  }
+}
