@@ -2,7 +2,38 @@
 
 Magpie is a basic web content to model binder. Model binding properties are defined as attributes and binded using css selectors. 
 
+Building the source
+========
+
+Project uses Grunt to build the application therefore you may need to install node and npm to your environment. Then simply call the following commands to build the code.
+
+```sh
+ npm install
+```
+
+```sh
+ grunt
+```
+
+If you want to build the application using dotnet you need to,
+1. Restore and build the library first
+```sh
+dotnet restore source/Magpie.Library && dotnet build source/Magpie.Library
+```
+
+2. Restore and build the tests
+```sh
+dotnet restore tests/Magpie.Library.Tests && dotnet build tests/Magpie.Library.Tests/
+```
+
+3. Run the tests
+```sh
+dotnet test tests/Magpie.Library.Tests/
+```
+
+
 Sample model implementation
+==========================
 ```csharp
 
         [CollectionBinding(Selector = ".list-items li")] // meaning that there might be more than one item is present.
