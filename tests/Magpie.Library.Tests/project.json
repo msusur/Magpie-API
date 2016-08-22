@@ -34,12 +34,6 @@
         "dnxcore50",
         "portable-net451+win8"
       ]
-    },
-    "net451": {
-      "dependencies": {
-        "Microsoft.NETCore.Platforms": "1.0.1",
-        "Moq": "4.5.21"
-      }
     }
   }
 }
