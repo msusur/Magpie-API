@@ -25,4 +25,4 @@ Usage of crawler
 
 # Next Steps
 
-Project is now idle and meant to be added to nuget but unfortunately I don't have much time. But anyone who has time, please send your pull requests!
+Still working on migrating to .Net Core, checkout the [dotnetcore-migration](https://github.com/msusur/Magpie-API/tree/dotnetcore-migration) branch for .Net Core version.
