@@ -16,17 +16,17 @@ Project uses Grunt to build the application therefore you may need to install no
 ```
 
 If you want to build the application using dotnet you need to,
-1. Restore and build the library first
+- Restore and build the library first
 ```sh
 dotnet restore source/Magpie.Library && dotnet build source/Magpie.Library
 ```
 
-2. Restore and build the tests
+- Restore and build the tests
 ```sh
 dotnet restore tests/Magpie.Library.Tests && dotnet build tests/Magpie.Library.Tests/
 ```
 
-3. Run the tests
+- Run the tests
 ```sh
 dotnet test tests/Magpie.Library.Tests/
 ```
