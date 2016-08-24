@@ -17,7 +17,7 @@
     }
   },
   "buildOptions": {
-    "emitEntryPoint": true,
+    "emitEntryPoint": false,
     "embed": [
       "HtmlTestResources/*.html"
     ]
