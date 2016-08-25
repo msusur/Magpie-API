@@ -1,5 +1,5 @@
-﻿using System;
-using CsQuery;
+﻿using AngleSharp.Dom;
+using System;
 
 namespace Magpie.Library.Parsers.ValueProviders
 {
@@ -12,6 +12,6 @@ namespace Magpie.Library.Parsers.ValueProviders
             BindingProperty = bindingProperty;
         }
 
-        public abstract object GetValue(IDomElement element, Type propertyType);
+        public abstract object GetValue(IElement element, Type propertyType);
     }
 }

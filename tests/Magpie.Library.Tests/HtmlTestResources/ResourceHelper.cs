@@ -10,7 +10,8 @@ namespace Magpie.Library.Tests.HtmlTestResources
         public static string LoadSampleHtml(string fileName)
         {
             fileName = $"Magpie.Library.Tests.HtmlTestResources.{fileName}.html";
-            using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fileName))
+            var assembly = typeof(ResourceHelper).GetTypeInfo().Assembly; 
+            using (Stream resourceStream = assembly.GetManifestResourceStream(fileName))
             {
                 if (resourceStream == null)
                 {

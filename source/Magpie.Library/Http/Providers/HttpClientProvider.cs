@@ -1,6 +1,5 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using CsQuery.ExtensionMethods;
 
 namespace Magpie.Library.Http.Providers
 {
@@ -18,14 +17,20 @@ namespace Magpie.Library.Http.Providers
                 httpContext.Options = options;
                 httpContext.Client = client;
 
-                options.Interceptors.ForEach(i => i.BeforeCall(httpContext));
+                foreach (var interceptor in options.Interceptors)
+                {
+                    interceptor.BeforeCall(httpContext);
+                }
 
                 // work on this one..
                 var response = await client.GetStringAsync(options.TargetUrl);
                 
                 httpContext.Response = new HttpResponse(response);
 
-                options.Interceptors.ForEach(i => i.AfterCall(httpContext));
+                foreach (var interceptor in options.Interceptors)
+                {
+                    interceptor.AfterCall(httpContext);
+                }
 
                 return httpContext.Response;
             }

@@ -1,0 +1,39 @@
+{
+  "version": "1.0.0-*",
+  "testRunner": "xunit",
+  "dependencies": {
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.0.0"
+    },
+    "xunit": "2.1.0",
+    "dotnet-test-xunit": "1.0.0-*",
+    "Newtonsoft.Json": "9.0.1",
+    "AngleSharp": "0.9.7",
+    "System.Net.Http": "4.1.0",
+    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
+    "Magpie.Library": {
+      "target": "project"
+    }
+  },
+  "buildOptions": {
+    "emitEntryPoint": false,
+    "embed": [
+      "HtmlTestResources/*.html"
+    ]
+  },
+  "frameworks": {
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.0.0"
+        }
+      },
+      "imports": [
+        "dnxcore50",
+        "portable-net451+win8"
+      ]
+    }
+  }
+}

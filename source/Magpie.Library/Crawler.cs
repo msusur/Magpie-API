@@ -22,7 +22,7 @@ namespace Magpie.Library
         private IList<TModel> CollectionContinuationFunction<TModel>(Task<HttpResponse> responseTask)
             where TModel : new()
         {
-            var parser = new HtmlParser(responseTask.Result.ResponseString);
+            var parser = new HtmlParserModule(responseTask.Result.ResponseString);
 
             return parser.ParseModelCollection<TModel>();
         }
@@ -30,7 +30,7 @@ namespace Magpie.Library
         private TModel ContinuationFunction<TModel>(Task<HttpResponse> responseTask)
             where TModel : new()
         {
-            var parser = new HtmlParser(responseTask.Result.ResponseString);
+            var parser = new HtmlParserModule(responseTask.Result.ResponseString);
 
             return parser.ParseModel<TModel>();
         }
@@ -43,7 +43,7 @@ namespace Magpie.Library
 
         private GenericModel CrawlGenericItem(Task<HttpResponse> obj, ParseModel model)
         {
-            var parser = new HtmlParser(obj.Result.ResponseString);
+            var parser = new HtmlParserModule(obj.Result.ResponseString);
 
             return parser.ParseModel<GenericModel>(model);
         }

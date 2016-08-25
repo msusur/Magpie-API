@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0-*",
+  "dependencies": {
+    "Newtonsoft.Json": "9.0.1",
+    "AngleSharp": "0.9.7",
+    "System.Net.Http": "4.1.0",
+    "System.Collections.Concurrent": "4.0.12"
+  },
+  "frameworks": {
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.0.0"
+        }
+      },
+      "imports": [
+        "dnxcore50",
+        "portable-net451+win8"
+      ]
+    }
+  }
+}

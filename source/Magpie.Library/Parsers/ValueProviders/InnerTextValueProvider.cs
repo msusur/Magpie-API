@@ -1,6 +1,6 @@
-﻿using System;
+﻿using AngleSharp.Dom;
+using System;
 using System.Diagnostics;
-using CsQuery;
 using Magpie.Library.Attributes;
 
 namespace Magpie.Library.Parsers.ValueProviders
@@ -11,11 +11,11 @@ namespace Magpie.Library.Parsers.ValueProviders
         {
         }
 
-        public override object GetValue(IDomElement element, Type propertyType)
+        public override object GetValue(IElement element, Type propertyType)
         {
             var attr = BindingProperty.Attribute as InnerTextBindingAttribute;
             Debug.Assert(attr != null);
-            return Convert.ChangeType(element.InnerText, propertyType);
+            return Convert.ChangeType(element.TextContent, propertyType);
         }
     }
 }
