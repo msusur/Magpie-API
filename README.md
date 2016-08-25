@@ -54,6 +54,6 @@ Usage of crawler
         var parseCollection = await crawler.CrawlCollection<DetailModel>("http://localhost:9090/test.html"); // binds into a collection of the model.
 ```
 
-# Next Steps
+# Further Notes
 
-Still working on migrating to .Net Core, checkout the [dotnetcore-migration](https://github.com/msusur/Magpie-API/tree/dotnetcore-migration) branch for .Net Core version.
+Project now migrated to .Net Core, if you want to checkout the .Net 4.5.2 version checkout to [dotnet452 branch](https://github.com/msusur/Magpie-API/tree/Dotnet452).
