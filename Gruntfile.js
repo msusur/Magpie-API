@@ -9,6 +9,9 @@ module.exports = function (grunt) {
       },
       run_tests: {
         cmd: 'dotnet test tests/Magpie.Library.Tests/'
+      },
+      build_pack: {
+        cmd: 'dotnet pack ./source/Magpie.Library -c Release -o ./artifacts'
       }
     }
   });

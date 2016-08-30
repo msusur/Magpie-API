@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/msusur/Magpie-API.svg?branch=master)](https://travis-ci.org/msusur/Magpie-API)
+
 # Magpie-API
 
 Magpie is a basic web content to model binder. Model binding properties are defined as attributes and binded using css selectors. 
