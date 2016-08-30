@@ -1,7 +1,7 @@
 ﻿using AngleSharp.Dom;
 using System;
-using System.Diagnostics;
 using Magpie.Library.Attributes;
+using Magpie.Library.Http.Exceptions;
 
 namespace Magpie.Library.Parsers.ValueProviders
 {
@@ -14,7 +14,10 @@ namespace Magpie.Library.Parsers.ValueProviders
         public override object GetValue(IElement element, Type propertyType)
         {
             var attr = BindingProperty.Attribute as InnerTextBindingAttribute;
-            Debug.Assert(attr != null);
+            if (attr == null)
+            {
+                throw new InvalidAttributeException(element, propertyType);
+            }
             return Convert.ChangeType(element.TextContent, propertyType);
         }
     }
