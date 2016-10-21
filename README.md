@@ -25,4 +25,4 @@ Usage of crawler
 
 # Next Steps
 
-Still working on migrating to .Net Core, checkout the [dotnetcore-migration](https://github.com/msusur/Magpie-API/tree/dotnetcore-migration) branch for .Net Core version.
+Project migrated to .Net Core, checkout the [master](https://github.com/msusur/Magpie-API/tree/master) branch for .Net Core version.
